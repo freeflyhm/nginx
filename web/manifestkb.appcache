@@ -1,0 +1,23 @@
+CACHE MANIFEST
+# 2015-08-19 version 4.0.8
+CACHE:
+  favicon.ico
+  css/jquery.mobile-1.4.5.min.css
+  css/fullcalendar.min.css
+  css/kb.css
+  fonts/glyphicons-halflings-regular.eot
+  fonts/glyphicons-halflings-regular.svg
+  fonts/glyphicons-halflings-regular.ttf
+  fonts/glyphicons-halflings-regular.woff
+  fonts/glyphicons-halflings-regular.woff2
+  jq/jquery.min.js
+  jq/jquery.mobile-1.4.5.min.js
+  jq/moment.min.js
+  jq/fullcalendar/fullcalendar.min.js
+  jq/fullcalendar/lang/zh-cn.js
+  jq/handlebars-v3.0.3.js
+  jq/socket.io.js
+  jq/rsa_encrypt.js
+# js/kb.js
+NETWORK:
+  *

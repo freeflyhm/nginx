@@ -1,0 +1,523 @@
+/*******************************************************
+ * zx.css flight4
+ * Root namespace styles
+**/
+
+/** Begin reset */
+/** End reset */
+
+
+
+/** Begin standard selectors */
+  html {
+    font-family: tahoma, arial, "Hiragino Sans GB", 宋体, sans-serif;
+  }
+
+  body {
+    font-size   : 12px;
+  	padding     : 50px 0 150px 0;
+    font-family: tahoma, arial, "Hiragino Sans GB", 宋体, sans-serif;
+    /*font-family : "Century Gothic","Microsoft yahei",'Trebuchet MS', Verdana, Helvetica, Arial, sans-serif;*/
+    background-color : #eee;
+  }
+  a { text-decoration : none; }
+    a:link, a:visited { color : inherit; }
+    a:hover { text-decoration: underline; }
+  strong {
+    font-weight : 700;
+    color       : #000;
+  }
+/** End standard selectors */
+/*.zx-shell-head {
+  z-index: 9999;
+}*/
+
+/*div[data-notify="container"] {
+  left: 0px;
+  width: 100%;
+}*/
+
+/** Begin zx namespace selectors */
+.zx-form-errors {
+  border-left: 5px solid #a94442;
+  padding-left: 15px;
+}
+
+.zx-form-errors li {
+  list-style-type: none;
+}
+
+.zx-form-errors li:before {
+  content: '\b7\a0';
+}
+/** End zx namespace selectors */
+
+
+/** Begin utility selectors */
+/** End utility selectors */
+
+
+
+/********************************************************
+ * zx.login.css
+ * Root namespace styles
+**/
+
+.zx-login-head {
+  margin-top: 20px;
+}
+
+.zx-login-title {
+  font-size:24px;
+}
+
+.zx-login-a-register {
+  position:absolute;
+  top:32px;
+  right:12px;
+}
+
+.zx-login-form {
+  margin-top:15px;
+}
+
+.zx-login-form-username {
+  margin-bottom:5px;
+} 
+
+/********************************************************
+ * zx.**list.css
+ * Root namespace styles
+**/
+
+.zx-list-top-btn {
+  margin-top:10px;
+}
+
+/********************************************************
+ * zx.userlist.css
+ * Root namespace styles
+**/
+
+button.updateUserBtn {
+  margin-right:10px;
+}
+
+/********************************************************
+ * zx.team.css
+ * Root namespace styles
+**/
+
+/* zx-team-header */
+#topBtnDiv {
+  height: 45px;
+}
+
+#beginEditTime, #gotoEditTeamBtn, #addServerDiv, #saveTeamBtn, #importBtn, #gobackDetailTeamBtn, 
+#saveSmBtn, #gotoEditSmBtn {
+  margin-left:10px;
+}
+
+/* zx-team-body */
+.table-condensed > tbody > tr > td {
+  height: 25px;
+}
+
+.table-condensed > tbody > tr > td.canEdit {
+  padding: 0px;
+}
+
+/*contenteditable 在火狐浏览器中不能换行*/
+.table-condensed > tbody > tr > td.canEdit > div {
+  min-height:100%;
+  width: 100%;
+  line-height:25px;
+  padding: 0 5px;
+}
+
+.table-condensed > tbody > tr > td.noteTd > div {
+  min-height: 140px;
+}
+
+/* table 团队信息 */
+#teamNumTdTh, #lineNameTdTh, #teamTypeTdTh {
+  width:10%;
+}
+#teamNumTd, #lineNameTd {
+  width:25%;
+}
+
+#teamNoteTdTh, #smNoteTdTh {
+  text-align: right;
+  font-weight: 700;
+}
+
+td.tdTh {
+  text-align: right;
+  font-weight: 700;
+}
+
+.fligt-badge {
+  margin-left:5px;
+  padding: 2px 5px;
+  background-color: #337ab7;
+}
+
+.tsm-badge {
+  margin-left:5px;
+  padding: 2px 5px;
+  background-color: #5bc0de;
+}
+
+.batch-num-alert {
+  margin-right:3px;
+  padding: 0 4px; 
+  font-size:12px;
+}
+
+li.warning, div.warning {
+  background-color: #fcf8e3;
+}
+
+/* table 航班信息 */
+a.trafficA {
+  padding: 0 5px 2px 5px;
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  margin-left: -24px;
+}
+
+#flightTdTh {
+  width:80px;
+}
+#serversTdTh {
+  min-width:40px;
+}
+#flightDateTdTh{
+  width:100px;
+}
+#flightNumTdTh {
+  min-width:75px;
+}
+#refreshTd {
+  width:60px;
+}
+#flightStartCityTdTh, #flightEndCityTdTh {
+  min-width:130px;
+}
+#flightStartTimeTdTh, #flightEndTimeTdTh {
+  width:70px;
+}
+#flightBacthTdTh {
+  min-width:200px;
+}
+
+button.refreshBtn {
+  padding:0 5px;
+  line-height: 1.3;
+}
+
+.table-condensed>tbody>tr>td.flightBacthTd {
+  padding: 0;
+}
+
+ul.flightBacthTdUl {
+  margin: 0;
+}
+
+li.userBatchLi {
+  padding: 5px 5px;
+}
+
+input.flightDate, input.flightTime {
+  height: 100%;
+  width: 100%;
+  border: 0;
+  background-color: transparent;
+  text-align: center;
+}
+
+.flightStartCityTd, .flightEndCityTd {
+  position: relative;
+}
+
+.zx-list td>s.s_icon {
+  height: 20px;
+  width: 20px;
+  margin:0 0 0 5px;
+  display: block;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background-image: url(../img/flight4.png);
+}
+
+.flightStartCityTd > s.s_icon {
+  height: 20px;
+  width: 20px;
+  margin:0 0 0 5px;
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 0;
+  background-image: url(../img/flight4.png);
+}
+
+.flightEndCityTd > s.s_icon {
+  height: 20px;
+  width: 20px;
+  margin:0 5px 0 0;
+  display: block;
+  position: absolute;
+  top: 3px;
+  right: 0;
+  background-image: url(../img/flight4.png);
+}
+
+/* sm_info_table */
+.tfoot_canEdit_left {
+  float:left;
+}
+.tfoot_canEdit_right {
+  float:right;
+}
+
+/* table 组信息 */
+th.batchTh {
+  min-width:160px;
+}
+th.opTh {
+  min-width:40px;
+}
+th.snTh, th.sexTh, th.ageTh, th.roomTh {
+  min-width:35px;
+}
+th.otherTh {
+  min-width:60px;
+}
+th.nameTh {
+  min-width:60px;
+}
+th.cardNumTh {
+  min-width:130px;
+}
+th.phoneTh {
+  min-width:90px;
+}
+th.birthdayTh {
+  min-width:75px;
+}
+th.cardCategoryTh {
+  min-width:80px;
+}
+th.ageTypeTh {
+  min-width:50px;
+}
+th.teamPersonNoteTh {
+  min-width:120px;
+}
+
+.clearDiv {
+  clear : both;
+}
+
+td.batch-td-rowspan {
+  position: relative;
+  padding:0;
+}
+
+span.batch-td-span {
+  color:#337ab7; font-weight:700;
+}
+
+.batch_td_icon_check_div {
+  position: absolute;
+  top: 3px;
+  right:5px;
+}
+
+.batch_td_icon_check_div > s.s_icon {
+  height: 20px;
+  width: 20px;
+  margin:0 5px 0 0;
+  display: block;
+  float: left;
+  background-image: url(../img/flight4.png);
+}
+
+.batch_td_meet_span {
+  margin: 0 5px;
+}
+
+.batchInfoTdTitle {
+  float: left;
+  width: 60px;
+  min-height: 18px;
+  color: burlywood;
+  margin: 1px 0 0 0;
+}
+
+.batchNumTitle {
+  float: left;
+  width: 30px;
+  min-height: 18px;
+  margin: 0;
+  position: relative;
+}
+.batchPersonTitle {
+  position: absolute;
+  /*margin-left: 40px;*/
+  right: -40px;
+}
+
+div.guest, div.teamBatchNote, div.smBatchNote, div.smAgencyFundDiv, div.smPaymentDiv {
+  margin-left: 60px; 
+}
+
+div.batchPersonCount {
+  border: 1px solid #ddd;
+  margin-left: 32px;
+  width: 22px;
+  text-align: center;
+}
+
+div.batchSpans {
+  float: right;
+}
+
+span.spanRemoveBatch, span.spanAddBatch,
+span.spanRemoveTr, span.spanNewTr {
+  padding: 0 2px;
+  display: table-cell;
+  cursor: pointer;
+}
+
+/*禁止文字选择*/
+td.opTd {
+  -moz-user-select: none; /*火狐*/
+  -webkit-user-select: none; /*webkit浏览器*/
+  -ms-user-select: none; /*IE10*/
+  -khtml-user-select: none; /*早期浏览器*/
+  user-select: none;
+}
+td.opTdClick {
+  -moz-user-select: none; /*火狐*/
+  -webkit-user-select: none; /*webkit浏览器*/
+  -ms-user-select: none; /*IE10*/
+  -khtml-user-select: none; /*早期浏览器*/
+  user-select: none;
+  cursor: pointer;
+}
+
+span.multiselect {
+  padding: 2px 6px;
+  font-size: 12px;
+  /*font-weight: bold;*/
+  cursor: pointer;
+}
+
+span.alert {
+  padding: 0 4px;
+}
+
+div.serverTagDiv {
+  float: left;
+  padding: 5px 8px 5px 5px;
+  margin: 4px 4px 0 0;
+}
+
+div.serverTagDiv > button.close {
+  position: relative;
+  top: -3px;
+  right: -4px;
+  color: inherit;
+}
+
+#setDefaultFlagBtn {
+  position: absolute;
+  /*margin-left: 55px;
+  margin-top: -34px;*/
+  top: -29px;
+  right: 0;
+  display: none;
+}
+
+#sendSetTimeDiv {
+  position: absolute;
+  /*margin-left: 55px;
+  margin-top: -34px;*/
+  top: -29px;
+  right: 102px;
+  /* display: none; */
+}
+
+button.sendSetTimeBtn {
+  height: 29px;
+}
+
+/*服务单列表*/
+.table>thead>tr>th.smlist-th {
+  padding: 4px;
+}
+
+
+/*收支项目列表*/
+.ui-autocomplete{
+  z-index: 99999;
+  border: 1px solid #ddd;
+  background-color: #fff; 
+}
+
+/* zx-workplan */
+.zx-workplan {
+  min-width: 620px;
+}
+
+.fc-day, .fc-day-number, .fc-event-container {
+  cursor: pointer;
+}
+
+.fc-other-month {
+  cursor: auto;
+}
+
+/* zx-home */
+#zx-home-table.table-bordered>tbody>tr>td{
+  border: 1px solid #006801;
+}
+
+.glyphicon-star-low{
+  margin-right: 3px;
+  color: #ddd;
+}
+
+.glyphicon-star-high{
+  margin-right: 3px;
+  color: #5cb85c;
+}
+
+.glyphicon-star-change{
+  cursor: pointer;
+}
+
+#idCardFee {
+  font-size: 18px;
+  font-weight: 700;
+  color: #337ab7;
+}
+
+#idCardFeeSum {
+  font-size: 18px;
+  font-weight: 700;
+  color: #337ab7;
+}
+
+/* 检测实名身份证 */
+#allSend {
+  cursor: pointer;
+}
+
+td.zx-cardcity-select input {
+  cursor: pointer;
+}

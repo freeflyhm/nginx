@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="leanbrown@live.cn Joe.He">
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>阳光服务</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <!--PUT YOUR FAVICON HERE-->
+    <!--REQUIRED STYLE SHEETS-->
+    <!--MAIN BOOTSTRAP STYLE-->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <!--VEGAS IMAGE STYLE -->
+    <link rel="stylesheet" href="assets/plugins/vegas/jquery.vegas.min.css" type="text/css">
+    <!--COUNTDOWN STYLE -->
+    <link rel="stylesheet" href="assets/css/countdown.css" rel="stylesheet" type="text/css">
+    <!--CUSTOM STYLE -->
+    <link rel="stylesheet" href="assets/css/style.css" rel="stylesheet" type="text/css">
+
+    <style>
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -50px; 
+        }
+
+        .hiddenbk {
+            filter:alpha(opacity=0);  
+            -moz-opacity:0;  
+            -khtml-opacity: 0;  
+            opacity: 0; 
+        }
+    </style>
+    <!--END REQUIRED STYLE SHEETS-->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <!-- LEFT MENU SECTION -->
+    <section class="left-panel">
+        <nav class="navigatation">
+            <div class="menu-text">
+                <h3>阳光服务</h3>
+            </div>
+            <a href="#home-section">首页</a>
+            <a href="#about-section">我们是谁</a>
+            <a href="#services-section">联系我们</a>
+            <!-- <a href="#subscribe-section">合作伙伴</a> -->
+        </nav>
+        <div id="social-links" class="Icon-trigger">
+            <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+        </div>
+    </section>
+    <!--END LEFT MENU SECTION -->
+    <!-- MAIN CONTAINER -->
+    <div class="container">
+        <!-- HOME SECION -->
+        <section id="home-section">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h1>简单 .快捷 .稳定 .专业</h1>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="divider"></div>
+                        <h3 class="center">提供领先的机场接送机服务</h3>
+                        <div class="divider"></div>
+
+                        <div id="loading">
+                            <img src="img/kb_loading.gif" alt="loading...">
+                        </div>
+
+                        <div id="counter-default" class="row hiddenbk">
+                            <div style="font-size: 24px;">截至<span id="what-day"></span>，我们已经服务：</div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div class="inner">
+                                    <div id="day-number" class="timer-number"></div>
+                                    <div class="timer-text"><small>家</small>公司</div>
+                                    <!-- <div class="progress medium  active">
+                                        <div id="day-bar" class="progress-bar bk-blue"></div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                                <div class="inner">
+                                    <div id="hour-number" class="timer-number">278</div>
+                                    <div class="timer-text"><small>个</small>用户</div>
+                                </div>
+                            </div> -->
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div class="inner">
+                                    <div id="minute-number" class="timer-number"></div>
+                                    <div class="timer-text"><small>个</small>团队</div>
+                                    <!-- <div class="progress medium  active">
+                                        <div id="minute-bar" class="progress-bar bk-pink"></div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div class="inner">
+                                    <div id="second-number" class="timer-number"></div>
+                                    <div class="timer-text"><small>位</small>旅客</div>
+
+                                    <!-- <div class="progress medium  active">
+                                        <div id="second-bar" class="progress-bar bk-red"></div>
+                                    </div> -->
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./Counter -->
+
+                        <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                            <a class="btn btn-success btn-lg btn-block" href="http://sz.zxsl.net.cn/">深圳 >></a>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                            <a class="btn btn-success btn-lg btn-block" href="http://gz.zxsl.net.cn/">广州 >></a>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                            <a class="btn btn-success btn-lg btn-block" href="http://hz.zxsl.net.cn/">杭州 >></a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!--./row-->
+        </section>
+        <!-- END HOME SECION -->
+        <!-- ABOUT SECION -->
+        <section id="about-section">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 abt-back-color">
+                    <div class="divider-two"></div>
+                    <h2 class="center">我们是谁</h2>
+                    <div class="divider-two margin-botom-50"></div>
+                    <!-- 本着“创一流产品、一流效益，服务用户”的宗旨，奉行“服务第一，信誉第一”的原则， -->
+                    <p class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+                        我们是阳光机场服务团队，从2012年开始，我们秉承“让游客顺心，让客户安心”的服务理念，为各旅行社、专线客户提供“专业、稳定”的机场接送机服务，帮助客户解决游客在机场遇到的问题，保证游客顺利乘机。
+                    </p>
+                    <p class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+                        4年来时间，我们在工作上不断探索，努力完善工作流程，提高服务水平，力求把机场服务工作做精做细。以人才、信息、质量、效率竭力满足旅游行业日新月异的发展需要。
+                    </p>
+                    
+                    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
+                        <h3>我们的优势</h3>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th style="width: 15%;">项目</th>
+                                <th>作用</th>
+                                <th style="width: 8%;">我们</th>
+                                <th style="width: 12%;">其他同行</th>
+                            </tr>
+                            <tr>
+                                <td>自有操作系统</td>
+                                <td>工作人员在电脑和手机上可以方便的查看工作信息，跟踪工作进度，最大程度确保工作完成的质量</td>
+                                <td>有</td>
+                                <td>无</td>
+                            </tr>
+                            <tr>
+                                <td>身份验证</td>
+                                <td>我们的系统可以检查使用身份证的游客的姓名和证件号码是否有误，提前预防错名问题，为客户减轻负担。</td>
+                                <td>有</td>
+                                <td>无</td>
+                            </tr>
+                            <tr>
+                                <td>发提醒短信</td>
+                                <td>送团前一天给游客发信息，起补充提醒作用，内容包括：集合时间、地点、联系人</td>
+                                <td>有</td>
+                                <td>很少有</td>
+                            </tr>
+                            <tr>
+                                <td>完成短信</td>
+                                <td>送团结束后给客户发完成短信，让客户放心</td>
+                                <td>有</td>
+                                <td>很少有</td>
+                            </tr>
+                            <tr>
+                                <td>多城市配合</td>
+                                <td>目前在深圳、广州、杭州三个城市机场均可以提供送机服务</td>
+                                <td>有</td>
+                                <td>很少有</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <h3><span class="glyphicon glyphicon-file" aria-hidden="true"></span></h3>
+                        <h3>服务宗旨</h3>
+                        <p>
+                            客户第一，安心至上。
+                            保证接送团服务质量，<br>
+                            把简单的事做完美，
+                            做能让客户安心的合作者。
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <h3><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></h3>
+                        <h3>服务标准</h3>
+                        <p>
+                            在服务过程中态度热情、诚恳，<br>
+                            工作专业、灵活，
+                            为客户做正面宣传。
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 center">
+                        <h3><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></h3>
+                        <h3>服务项目</h3>
+                        <p>
+                            机场内接送机<br>
+                            机场外接送机
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END ABOUT SECION -->
+        <!-- SERVICES SECION -->
+        <section id="services-section">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 srvc-back-color">
+                    <div class="divider-two"></div>
+                    <h2 class="center">联系我们</h2>
+                    <div class="divider-two margin-botom-50"></div>
+        
+                    <p class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 center">
+                        探寻这里的秘密；体验这里的挑战；加入我们的团队；
+                    </p>
+                    <p class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 center">
+                        我们的成长邀请你一同参与！
+                    </p>
+        
+                    <p class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 center">
+                        <span>深圳机场负责人：沈斌</span>
+                        <span><abbr title="Phone">手机:</abbr>15814750610</span>
+                        <span><abbr title="Phone">QQ:</abbr>2246506846</span>
+                    </p>
+                    <p class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 center">
+                        <span>广州机场负责人：周文斌</span>
+                        <span><abbr title="Phone">手机:</abbr>18819340476</span>
+                        <span><abbr title="Phone">QQ:</abbr>3379215238</span>
+                    </p>
+                    <p class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 center">
+                        <span>杭州机场负责人：童斌</span>
+                        <span><abbr title="Phone">手机:</abbr>13905599444</span>
+                        <span><abbr title="Phone">QQ:</abbr>31952767</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!--END SERVICES SECION -->
+        <!-- SUBSCRIBE SECION -->
+        <!-- <section id="subscribe-section">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sb-back-color">
+                    <div class="divider-two"></div>
+                    <h2 class="center">合作伙伴</h2>
+                    <div class="divider-two margin-botom-50"></div>
+                    <div style="margin-bottom: 12px;" class="col-lg-3 col-md-3 col-sm-3 col-xs-6 center">
+                        <img style="width: 100%;" src="assets/img/1.png">
+                    </div>
+                    <div style="margin-bottom: 12px;" class="col-lg-3 col-md-3 col-sm-3 col-xs-6 center">
+                        <img style="width: 100%;" src="assets/img/1.png">
+                    </div>
+                    <div style="margin-bottom: 12px;" class="col-lg-3 col-md-3 col-sm-3 col-xs-6 center">
+                        <img style="width: 100%;" src="assets/img/1.png">
+                    </div>
+                    <div style="margin-bottom: 12px;" class="col-lg-3 col-md-3 col-sm-3 col-xs-6 center">
+                        <img style="width: 100%;" src="assets/img/1.png">
+                    </div>
+                    <div style="margin-bottom: 12px;" class="col-lg-3 col-md-3 col-sm-3 col-xs-6 center">
+                        <img style="width: 100%;" src="assets/img/1.png">
+                    </div>
+                    <div style="margin-bottom: 12px;" class="col-lg-3 col-md-3 col-sm-3 col-xs-6 center">
+                        <img style="width: 100%;" src="assets/img/1.png">
+                    </div>
+                    <div style="margin-bottom: 12px;" class="col-lg-3 col-md-3 col-sm-3 col-xs-6 center">
+                        <img style="width: 100%;" src="assets/img/1.png">
+                    </div>
+                    <div style="margin-bottom: 12px;" class="col-lg-3 col-md-3 col-sm-3 col-xs-6 center">
+                        <img style="width: 100%;" src="assets/img/1.png">
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <!-- END SUBSCRIBE SECION -->
+        <!-- FOOTER SECION -->
+        <section id="footer">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    &copy; zxsl.net.cn 2016 | All rights Reserved. Power By Joe.
+                </div>
+            </div>
+            <!--./row-->
+        </section>
+        <!--END FOOTER SECION -->
+    </div>
+    <!-- END MAIN CONTAINER -->
+    <!--REQUIRED SCRIPTS FILES-->
+    <!--SCRIPTS AT END SO PAGE WILL TAKE LESS TIME TO LOAD-->
+    <!--REQUIRED CORE JQUERY SCRIPTS FILE-->
+    <script src="jq/jquery.min.js"></script>
+    <script src="jq/moment.min.js"></script>
+    <!--REQUIRED BOOTSTRAP SCRIPTS FILE-->
+    <script src="jq/bootstrap.min.js"></script>
+    <!--REQUIRED SCRIPT FILES FOR JQUERY COUNTDOWN-->
+    <!-- <script src="assets/plugins/countdown/jquery.countdown.js"></script> -->
+    <!-- <script src="assets/js/countdown.js"></script> -->
+    <!--REQUIRED SCRIPT FILE FOR VEGAS BACKGROUND IMAGE-->
+    <script src="assets/plugins/vegas/jquery.vegas.min.js"></script>
+    <!--REQUIRED SCRIPT FOR SCROLLING MENU LINKS-->
+    <script src="assets/plugins/jquery.easing.1.3.js"></script>
+    <!--REQUIRED CUSTOM SCRIPT FILE-->
+    <script src="assets/js/custom-image.js"></script>
+    <!--END REQUIRED SCRIPTS FILES-->
+</body>
+
+
+</html>

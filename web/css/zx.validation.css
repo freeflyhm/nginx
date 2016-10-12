@@ -1,0 +1,7 @@
+div.person-check-err {
+  border: 2px solid red;
+}
+
+div.person-check-ok {
+  border: 2px solid green;
+}

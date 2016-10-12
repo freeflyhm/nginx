@@ -1,0 +1,38 @@
+CACHE MANIFEST
+# 2016-03-30 version 4.0.1
+CACHE:
+  favicon.ico
+  css/bootstrap.min.css
+  css/formValidation.min.css
+  css/fullcalendar.min.css
+  css/bootstrap-datetimepicker.min.css
+  css/jquery-ui.min.css
+  css/zx.css
+  css/zx.validation.css
+  css/zx.sidebar.css
+  css/zx.importpeople.css
+  fonts/glyphicons-halflings-regular.eot
+  fonts/glyphicons-halflings-regular.svg
+  fonts/glyphicons-halflings-regular.ttf
+  fonts/glyphicons-halflings-regular.woff
+  fonts/glyphicons-halflings-regular.woff2
+  jq/socket.io.js
+  jq/jquery.min.js
+  jq/bootstrap.min.js
+  jq/jquery.event.gevent.js
+  jq/jquery.uriAnchor.js
+  jq/formValidation.min.js
+  jq/framework/bootstrap.min.js
+  jq/jquery.zxvalidation.js
+  jq/moment.min.js
+  jq/handlebars-v3.0.3.js
+  jq/fullcalendar/fullcalendar.min.js
+  jq/fullcalendar/lang_u/zh-cn.js
+  jq/bootstrap-datetimepicker.min.js
+  jq/jquery-ui.min.js
+  jq/velocity.min.js
+  jq/docx/docxgen.min.js
+  jq/docx/FileSaver.min.js
+  jq/docx/jszip-utils.js
+NETWORK:
+  *

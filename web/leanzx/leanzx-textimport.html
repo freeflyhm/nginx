@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <title>操作视频列表</title>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+</head>
+<body>
+  <!-- <a id="backHome" hidden> << 返回首页</a> -->
+  <div class="container-fluid">
+    <h3>操作视频<small> - 名单导入（文本名单）</small></h3>
+    <div class="row" style="border: 1px solid #337ab7; margin: 15px;">
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="padding: 0;">
+        <div class="list-group">
+          <a id="leanzx" class="list-group-item">
+            <h4 class="list-group-item-heading">发单流程（快速）</h4>
+            <p class="list-group-item-text">发一张单需要多久？让我来告诉你。。。</p>
+          </a>
+          <a id="formimport" class="list-group-item">
+            <h4 class="list-group-item-heading">名单导入（表格名单）</h4>
+            <p class="list-group-item-text">请您使用规范的表格轻松导入名单。</p>
+          </a>
+          <div class="list-group-item active">
+            <h4 class="list-group-item-heading">名单导入（文本名单）</h4>
+            <p class="list-group-item-text">可以从文本导入名单？是的。</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" style="padding: 0;">
+        <div>
+          <video src="http://leanzx.zxsl.net.cn/outside/textimport.mp4" controls="controls" style="width:100%;">
+            您的浏览器不支持 video 标签。
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../jq/jquery.min.js"></script>
+  <script>
+    (function() {
+      $(document).ready(function() {
+        $('#leanzx').attr('href', 'http://' + document.location.host + '/leanzx/leanzx.html');
+        $('#formimport').attr('href', 'http://' + document.location.host + '/leanzx/leanzx-formimport.html');
+        
+        //$('#backHome').attr('href', 'http://' + document.location.host);
+        //$('#backHome').prop('hidden', false);
+      });
+    })();
+  </script>
+</body>
+</html>

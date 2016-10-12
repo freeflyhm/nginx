@@ -1,0 +1,283 @@
+<!doctype html>
+<!-- <html lang="zh-CN" manifest="manifestsz.appcache"> -->
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <!-- ie9+ rendering support for latest standards -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <!-- HTTP 1.1 -->  
+  <meta http-equiv="pragma" content="no-cache">  
+  <!-- HTTP 1.0 -->  
+  <meta http-equiv="cache-control" content="no-cache">  
+  <!-- Prevent caching at the proxy server -->  
+  <meta http-equiv="expires" content="0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="leanbrown@live.cn Joe.He">
+  <title>阳光服务</title>
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <style type="text/css">
+    #loadingDiv {
+      height:50%;
+      width: 100%;
+      position:fixed;
+      bottom: 0;
+      font-size: 100px;
+      color: #ddd;
+      text-align: center;
+    }
+
+    #loading-progress{
+      background:#337ab7;
+      height:2px;
+      position:fixed;
+      bottom: 50px;
+      z-index:99999;
+    }
+  </style>
+
+  <!-- third-party stylesheets -->
+  <link rel="stylesheet" href="css/bootstrap.min.css"                type="text/css">
+  <link rel="stylesheet" href="css/formValidation.min.css"           type="text/css">
+  <link rel="stylesheet" href="css/fullcalendar.min.css"             type="text/css">
+  <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" type="text/css">
+  <link rel="stylesheet" href="css/jquery-ui.min.css"                type="text/css">
+  <!-- zx stylesheets -->
+  <link rel="stylesheet" href="css/zx.css"                           type="text/css">
+  <link rel="stylesheet" href="css/zx.validation.css"                type="text/css">
+  <link rel="stylesheet" href="css/zx.sidebar.css"                   type="text/css">
+  <link rel="stylesheet" href="css/zx.importpeople.css"              type="text/css">
+</head>
+<body>
+  <!-- third-party javascript -->
+  <script src="jq/socket.io.js"></script>
+  <script src="jq/jquery.min.js"></script>
+
+  <div id="loadingDiv">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+
+        <div id="loading-xiaojiqiao" class="alert alert-success" style="font-size:20px;" role="alert">
+        </div>
+      </div>
+    </div>
+    <span id="loadingSpan"></span>
+    <div id="loading-progress"></div>
+  </div>
+  <script type="text/javascript">
+    var xiaojiqiao = [
+      '<strong>小提示：</strong><br>导入客户名单尽量使用规范的表格导入，可以提高识别转化率哦',
+      '<strong>小提示：</strong><br>要进入编辑模式才能修改单子的内容哈~（按钮在右上角）',
+      '<strong>小提示：</strong><br>提个醒！同一账号不能同时在两台设备上使用哦',
+      '<strong>小提示：</strong><br>在手机上用QQ浏览器登录最完美，一般人我不告诉他^_^',
+      '<strong>小提示：</strong><br>最好给每个同事分配一个账号，不然他们打起来我可不负责~',
+      '<strong>小提示：</strong><br>鼠标移动到屏幕的最左边，这样就可以弹出或关闭消息框',
+      '<strong>小提示：</strong><br>名单人数由系统自动生成且不可手动修改，名单人数等于名单表格内的行数(包括空白行)，请通过增减行数调节名单人数。',
+      '<strong>小提示：</strong><br>注意！团队单和服务单中各个备注栏的内容是不同步的，请分别备注'
+    ],
+    i = rd(0, 7);
+
+    $('#loading-xiaojiqiao').html(xiaojiqiao[i]);
+
+    function rd(n, m) {
+      var c = m - n + 1;
+      return Math.floor(Math.random() * c + n);
+    }
+  </script>
+
+  <script src="jq/bootstrap.min.js"></script>
+  <script src="jq/jquery.event.gevent.js"></script>
+
+  <script type="text/javascript">
+    $('#loading-progress').animate({'width':'5%'}, 10);
+    $('#loadingSpan').text('5%');
+  </script>
+
+  <script src="jq/jquery.uriAnchor.js"></script>
+  <script src="jq/formValidation.min.js"></script>
+
+  <script type="text/javascript">
+    $('#loading-progress').animate({'width':'10%'}, 10);
+    $('#loadingSpan').text('10%');
+  </script>
+
+  <script src="jq/framework/bootstrap.min.js"></script>
+  <script src="jq/jquery.zxvalidation.js"></script>
+
+  <script type="text/javascript">
+    $('#loading-progress').animate({'width':'15%'}, 10);
+    $('#loadingSpan').text('15%');
+  </script>
+
+  <script src="jq/moment.min.js"></script>
+  <script src="jq/handlebars-v3.0.3.js" ></script>
+
+  <script type="text/javascript">
+    $('#loading-progress').animate({'width':'20%'}, 10);
+    $('#loadingSpan').text('20%');
+  </script>
+
+  <script src="jq/fullcalendar/fullcalendar.min.js"></script>
+  <script src="jq/fullcalendar/lang_u/zh-cn.js"></script>
+  <script src="jq/bootstrap-datetimepicker.min.js"></script>
+  
+  <script type="text/javascript">
+    $('#loading-progress').animate({'width':'25%'}, 10);
+    $('#loadingSpan').text('25%');
+  </script>
+  
+  <script src="jq/bootstrap-notify.min.js"></script>
+  <script src="jq/jquery-ui.min.js"></script>
+  <script src="jq/velocity.min.js"></script>
+  
+  <script type="text/javascript">
+    $('#loading-progress').animate({'width':'30%'}, 10);
+    $('#loadingSpan').text('30%');
+  </script>
+
+  <script src="jq/docx/docxgen.min.js"></script>
+  <script src="jq/docx/FileSaver.min.js"></script>
+  <script src="jq/docx/jszip-utils.js"></script>
+  <!--
+  Mandatory in IE 6, 7, 8 and 9.
+  -->
+  <!--[if IE]>
+      <script type="text/javascript" src="jq/docx/jszip-utils-ie.js"></script>
+  <![endif]-->
+
+  <!-- hz javascript -->
+
+  <script type="text/javascript">
+    $('#loading-progress').animate({'width':'35%'}, 10);
+    $('#loadingSpan').text('35%');
+  </script>
+
+  <script src="js/zx.js"></script>
+  <script src="js/zx.config.js"></script>
+  <script src="js/zx.data.js"></script>
+
+  <script type="text/javascript">
+    $('#loading-progress').animate({'width':'40%'}, 10);
+    $('#loadingSpan').text('40%');
+  </script>
+
+  <script src="js/zx.model.js"></script>
+  <script src="js/zx.shell.js"></script>
+  <script src="js/zx.sidebar.js"></script>
+
+  <script type="text/javascript">
+    $('#loading-progress').animate({'width':'45%'}, 10);
+    $('#loadingSpan').text('45%');
+  </script>
+
+  <script src="js/zx.util.js"></script>
+  <script src="js/zx.login.js"></script>
+  <script src="js/zx.util_b.js"></script>
+
+
+  <script src="js/zx.validator.js"></script>
+  <script src="sz/zx.home.js"></script>
+
+  <script type="text/javascript">
+    $('#loading-progress').animate({'width':'50%'}, 10);
+    $('#loadingSpan').text('50%');
+  </script>
+
+  <script src="js/zx.workplan.js"></script>
+  <script src="js/zx.pinganlist.js"></script>
+  <script src="js/zx.importpingan.js"></script>
+
+  <script type="text/javascript">
+    $('#loading-progress').animate({'width':'55%'}, 10);
+    $('#loadingSpan').text('55%');
+  </script>
+
+  <script src="js/zx.modal.js"></script>
+  <script src="js/zx.djplist.js"></script>
+  <script src="js/zx.companylist.js"></script>
+
+  <script type="text/javascript">
+    $('#loading-progress').animate({'width':'60%'}, 10);
+    $('#loadingSpan').text('60%');
+  </script>
+
+  <script src="js/zx.userlist.js"></script>
+  <script src="js/zx.setplacelist.js"></script>
+  <script src="js/zx.feestemplist.js"></script>
+
+  <script type="text/javascript">
+    $('#loading-progress').animate({'width':'65%'}, 10);
+    $('#loadingSpan').text('65%');
+  </script>
+
+  <script src="js/zx.dengjipailist.js"></script><!-- 登机牌用户列表 -->
+  <script src="js/zx.teamlist.js"></script>
+  <script src="js/zx.team.js"></script>
+
+  <script type="text/javascript">
+    $('#loading-progress').animate({'width':'70%'}, 10);
+    $('#loadingSpan').text('70%');
+  </script>
+
+  <script src="js/zx.cardcity.js"></script>
+  <script src="js/zx.importpeople.js"></script>
+  <script src="js/zx.pingan.js"></script>
+
+  <script type="text/javascript">
+    $('#loading-progress').animate({'width':'75%'}, 10);
+    $('#loadingSpan').text('75%');
+  </script>
+
+  <script src="js/zx.smlist.js"></script>
+  <script src="js/zx.flaglist.js"></script>
+  <script src="js/zx.guidelist.js"></script>
+
+  <script type="text/javascript">
+    $('#loading-progress').animate({'width':'80%'}, 10);
+    $('#loadingSpan').text('80%');
+  </script>
+
+  <script src="js/zx.guestlist.js"></script>
+  <script src="js/zx.operatorlist.js"></script>
+  <script src="js/zx.feestemp.js"></script>
+
+  <script type="text/javascript">
+    $('#loading-progress').animate({'width':'90%'}, 10);
+    $('#loadingSpan').text('90%');
+  </script>
+
+  <script src="js/zx.billslist.js"></script>
+  <script src="js/zx.servermanlist.js"></script>
+  <script src="js/zx.bplist.js"></script>
+
+  <script type="text/javascript">
+    $('#loading-progress').animate({'width':'95%'}, 10);
+    $('#loadingSpan').text('95%');
+  </script>
+
+  <script src="js/zx.billsnow.js"></script>
+  <script src="js/zx.billsitemisedlist.js"></script>
+  <script src="js/zx.billsitemised.js"></script>
+
+  <script type="text/javascript">
+    $('#loading-progress').animate({'width':'100%'}, 10);
+    $('#loadingSpan').text('100%');
+  </script>
+
+  <script src="js/zx.billstotal.js"></script>
+  <script src="js/zx.getusers.js"></script>
+  <script src="js/zx.statement.js"></script>
+
+  <noscript>
+    <p>本页面需要浏览器支持（启用）JavaScript.</p>
+  </noscript>
+  <audio id="chatAudio">
+    <source src="sound/notify.ogg" type="audio/ogg"> 
+    <source src="sound/notify.mp3" type="audio/mpeg">
+    <source src="sound/notify.wav" type="audio/wav"> 
+  </audio>
+
+  <div id="zx"></div>
+</body>
+</html>

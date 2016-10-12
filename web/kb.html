@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" manifest="manifestkb.appcache">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>阳光看板</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+  <link rel="stylesheet" href="css/fullcalendar.min.css">
+  <link rel="stylesheet" href="css/kb.css">
+
+  <script src="jq/jquery.min.js"></script>
+  <script src="jq/jquery.mobile-1.4.5.min.js"></script>
+  <script src="jq/moment.min.js"></script>
+  <script src="jq/fullcalendar/fullcalendar.min.js"></script>
+  <script src="jq/fullcalendar/lang/zh-cn.js"></script>
+  <script src="jq/handlebars-v3.0.3.js"></script>
+  <script src="jq/socket.io.js"></script> 
+  <script src="jq/rsa_encrypt.js"></script> 
+</head>
+
+<body>
+  <!-- 列表 -->
+  <div data-role="page" id="index">
+    <div data-role="header" data-position="fixed" data-theme="b">
+      <h1>列表 <small><span id="name-span"></span><span id="online-span"></span></small></h1>
+      <a href="#kb-me-page" data-role="button" data-icon="gear" data-transition="none" class="ui-btn-right">我的地盘</a>
+    </div>
+    <div id="kb-list"></div>
+    <div data-role="footer" data-position="fixed" data-theme="b">
+      <div data-role="navbar" data-iconpos="right">
+        <ul>
+          <li><a id="prevBtn" href="#">上一天</a></li>
+          <li><a id="todayBtn" href="#" data-icon="refresh">今天</a></li>
+          <li><a id="nextBtn" href="#">下一天</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- 用户认证 -->
+  <div data-role="page" id="kb-login-page">
+    <div data-role="header" data-position="fixed" data-theme="b">
+      <a href="#kb-me-page" data-role="button" data-icon="back" data-transition="none">我的地盘</a>
+      <h1>用户认证</h1>
+    </div>
+    <div role="main" class="ui-content">
+      <select id="userNameSelect"></select>
+      <input id="passwordInput" type="password" placeholder="请输入密码">
+      <button id="loginBtn">用户认证</button>
+    </div>
+  </div>
+  <!-- 操作-保险 -->
+  <div data-role="page" id="kb-insurance-page">
+    <div data-role="header" data-position="fixed" data-theme="b">
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          <input id="person_phone" type="text" placeholder="手机号码">
+        </div>
+        <div class="ui-block-b">
+          <input id="shortNumInput" type="text" placeholder="保险卡尾号">
+        </div>
+      </div>
+    </div>
+    <div id="insurance-main" role="main" class="ui-content">
+      <div style="font-size:12px;">
+        选择&nbsp;<span id="nameCountSpan">0</span>;&nbsp;
+        剩余&nbsp;<span id="cardCountSpan">0</span>;
+      </div>
+
+      <table id="kb-insurance-table">
+        <tbody id="kb-pingan-tbody"></tbody>
+      </table>
+    </div>
+    <div data-role="footer" data-position="fixed" data-theme="b">
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#kb-detail-page" data-transition="none">返回操作</a></li>
+          <li><a id="zx-pingan-submit" href="#" data-transition="none">开保险</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- 操作-短信 -->
+  <div data-role="page" id="kb-msg-page">
+    <div data-role="header" data-position="fixed" data-theme="b">
+      <h1>短信</h1>    
+    </div>
+    <div id="msg-main" role="main" class="ui-content">
+      <textarea id="sm-msg-phones" disabled></textarea>
+      <textarea id="sm-msg-text" disabled></textarea>
+      <select id="sm-msg-switch" data-role="slider" disabled>
+        <option value="down">完成</option>
+        <option value="up">集合</option>
+      </select>
+      <textarea id="ok-msg-phones" disabled></textarea>
+      <textarea id="ok-msg-text" disabled></textarea>
+    </div>
+    <div data-role="footer" data-position="fixed" data-theme="b">
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#kb-detail-page" data-transition="none">返回操作</a></li>
+          <li><a id="sendMsgBtn">发送短信</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- 操作-编辑登机牌备注 -->
+  <div data-role="page" id="kb-editdjpnote-page">
+    <div data-role="header" data-position="fixed" data-theme="b">
+      <a href="#kb-detail-page" data-role="button" data-icon="back" data-transition="none">返回操作</a>
+      <h1>编辑</h1>
+    </div>
+    <div role="main" class="ui-content">
+      <p for="djpNoteEditDiv">登机牌备注<p/>
+      <div id="djpNoteEditDiv" contenteditable="true" spellcheck="false"></div>
+      <button id="djpNoteSaveBtn">保存</button>
+    </div>
+  </div>
+  <!-- 操作-编辑服务备注 -->
+  <div data-role="page" id="kb-editservernote-page">
+    <div data-role="header" data-position="fixed" data-theme="b">
+      <a href="#kb-detail-page" data-role="button" data-icon="back" data-transition="none">返回操作</a>
+      <h1>编辑</h1>
+    </div>
+    <div role="main" class="ui-content">
+      <p for="serverNoteEditDiv">服务备注</p>
+      <div id="serverNoteEditDiv" contenteditable="true" spellcheck="false"></div>
+      <button id="serverNoteSaveBtn">保存</button>
+    </div>
+  </div>
+  <!-- 操作-修改删除改签航班 -->
+  <div data-role="page" id="kb-editflight-page">
+    <div data-role="header" data-position="fixed" data-theme="b">
+      <a href="#kb-detail-page" data-role="button" data-icon="back" data-transition="none">返回操作</a>
+      <h1>编辑</h1>
+    </div>
+    <div role="main" class="ui-content">
+      <p>修改或改签航班</p>
+
+      <div id="set_flight_div" data-role="fieldcontain">  
+        <fieldset id="set_flight_field" data-role="controlgroup">  
+          <legend>请选择一个航班：</legend>
+        </fieldset>  
+      </div>
+      
+      <table width="100%">
+        <tr>
+          <td width="40%" id="flightDateTd"></td>
+          <td width="60%"><input type="text" id="flightDateInput"></td>
+        </tr>
+        <tr>
+          <td id="flightNumTd"></td>
+          <td><input type="text" id="flightNumInput"></td>
+        </tr>
+        <tr>
+          <td id="flightStartCityTd"></td>
+          <td><input type="text" id="flightStartCityInput"></td>
+        </tr>
+        <tr>
+          <td id="flightEndCityTd"></td>
+          <td><input type="text" id="flightEndCityInput"></td>
+        </tr>
+        <tr>
+          <td id="flightStartTimeTd"></td>
+          <td><input type="text" id="flightStartTimeInput"></td>
+        </tr>
+        <tr>
+          <td id="flightEndTimeTd"></td>
+          <td><input type="text" id="flightEndTimeInput"></td>
+        </tr>
+      </table>
+      
+      <div data-role="controlgroup" data-type="horizontal">
+        <button id="flightSearchBtn">查找</button>
+        <button id="flightUpdateBtn">修改</button>
+        <button id="flightDelBtn">删除改签</button>
+        <button id="flightSaveBtn">改签</button>
+      </div>
+    </div>
+  </div>
+  <!-- 操作 -->
+  <div data-role="page" id="kb-detail-page">
+    <div data-role="header" data-position="fixed" data-theme="b">
+      <a href="#index" data-role="button" data-icon="back" data-transition="none">返回列表</a>
+      <h1>操作</h1>
+    </div>
+    <div role="main" class="ui-content" style="padding-top:0;">
+      <div id="detail-mask"><p>离线状态不能编辑</p></div>
+      <div class="ui-grid-a" style="z-index:2000;">
+        <div class="ui-block-a">
+          <button id="gotoInsurancePageBtn" data-mini="true" data-corners="false" data-icon="lock" data-transition="none" style="margin-left:0;margin-right:0;">开保险</button>
+        </div>
+        <div class="ui-block-b">
+          <a href="#kb-msg-page" data-role="button" data-mini="true" data-corners="false" data-icon="mail" data-transition="none" style="margin-left:0;margin-right:0;">发短信</a>
+        </div>
+      </div>
+
+      <fieldset id="kb-item" data-role="fieldcontain" data-mini="true">
+        <div class="ui-grid-a">
+          <div class="ui-block-a" style="width: 40%; display: none;"><span>集合短信</span></div>
+          <div class="ui-block-b" style="width: 60%; display: none;">
+            <select id="phoneMsgStatusSelect" class="itemSelect" data-mini="true">
+              <option value="0">待发</option>
+              <option value="1">已发</option>
+              <option value="2">不发</option>
+            </select>
+          </div>
+          <div class="ui-block-a" style="width:40%;"><span>现场负责</span></div>
+          <div class="ui-block-b" style="width:60%;">
+            <select id="servermanSelect" class="itemSelect" data-mini="true"></select>
+          </div>
+          <div class="ui-block-a" style="width:40%;"><span>登机牌</span></div>
+          <div class="ui-block-b" style="width:60%;">
+            <select id="djpStateSelect" class="itemSelect" data-mini="true">
+              <option value="未办理">未办理</option>
+              <option value="已办理">已办理</option>
+              <option value="部分已领">部分已领</option>
+              <option value="全部OK">全部OK</option>
+            </select>
+          </div>
+        </div>
+
+        <a class="note_a" href="#kb-editdjpnote-page" data-transition="none">
+          <div id="djpNoteDiv" class="ui-field-contain"></div>
+        </a>
+
+        <div class="ui-grid-a">
+          <div class="ui-block-a" style="width:40%;"><span>集合地点</span></div>
+          <div class="ui-block-b" style="width:60%;">
+            <select id="smSetPlaceSelect" class="itemSelect" data-mini="true"></select>
+          </div>
+          <div class="ui-block-a" style="width:40%;"><span>航班状态</span></div>
+          <div class="ui-block-b" style="width:60%;">
+            <select id="flightStateSelect" class="itemSelect" data-mini="true">
+              <option value=""></option>
+              <option value="计划">计划</option>
+              <option value="延误">延误</option>
+              <option value="取消">取消</option>
+              <option value="起飞">起飞</option>
+            </select>
+          </div>
+        </div>
+
+        <a class="note_a" href="#kb-editflight-page" data-transition="none">
+          <div id="flightDiv" class="ui-field-contain" style="font-size:12px;">
+            <div><del id="flight_del_div_del"></del></div>
+            <div id="flight_div"></div>
+          </div>
+        </a>
+
+        <div id="smAgencyFund_tr" class="ui-grid-a">
+          <div class="ui-block-a" style="width:40%;"><span>代收</span></div>
+          <div class="ui-block-b" style="width:60%;">
+            <select id="smAgencyFundStateSelect" class="itemSelect" data-mini="true">
+              <option value="未收">未收</option>
+              <option value="已收">已收</option>
+            </select>
+          </div>
+        </div>
+        <div id="smPayment_tr" class="ui-grid-a">
+          <div class="ui-block-a" style="width:40%;"><span>代付</span></div>
+          <div class="ui-block-b" style="width:60%;">
+            <select id="smPaymentStateSelect" class="itemSelect" data-mini="true">
+              <option value="未收">未收</option>
+              <option value="已收">已收</option>
+            </select>
+          </div>
+        </div> 
+        <div id="smPayment_tr" class="ui-grid-a"> 
+          <div class="ui-block-a" style="width:40%;"><span>服务状态</span></div>
+          <div class="ui-block-b" style="width:60%;">
+            <select id="serverStateSelect" class="itemSelect" data-mini="true">
+              <option value="未完成">未完成</option>
+              <option value="完成">完成</option>
+            </select>
+          </div>
+        </div>
+
+        <a class="note_a" href="#kb-editservernote-page" data-transition="none">
+          <div id="serverNoteDiv" class="ui-field-contain" style="font-size:12px;"></div>
+        </a>
+      </fieldset>
+    </div>
+    <div data-role="footer" data-position="fixed" data-theme="b">
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#" class="ui-btn-active ui-state-persist" data-transition="none">操作</a></li>
+          <li><a href="#kb-sm-page" data-transition="none">名单</a></li>
+          <li><a href="#kb-flight-page" data-transition="none">航班</a></li>
+          <li><a href="#kb-history-page" data-transition="none">历史</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- 名单 -->
+  <div data-role="page" id="kb-sm-page">
+    <div data-role="header" data-position="fixed" data-theme="b">
+      <a href="#index" data-role="button" data-icon="back" data-transition="none">返回列表</a>
+      <h1>名单</h1>
+    </div>
+    <div id="sm-main" role="main" class="ui-content" style="padding-top:0;">
+      <div data-role="collapsible" data-collapsed="false" data-mini="true">
+        <h1>摘要信息</h1>
+        <ul id="sm-listview" data-role="listview"></ul>
+      </div>
+    </div>
+    <div data-role="footer" data-position="fixed" data-theme="b">
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#kb-detail-page" data-transition="none">操作</a></li>
+          <li><a href="#" class="ui-btn-active ui-state-persist" data-transition="none">名单</a></li>
+          <li><a href="#kb-flight-page" data-transition="none">航班</a></li>
+          <li><a href="#kb-history-page" data-transition="none">历史</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- 航班信息 -->
+  <div data-role="page" id="kb-flight-page">
+    <div data-role="header" data-position="fixed" data-theme="b">
+      <a href="#index" data-role="button" data-icon="back" data-transition="none">返回列表</a>
+      <h1>航班</h1>    
+    </div>
+    <div id="flight-main-before" role="main" class="ui-content">
+      目前只能获取当天的航班信息。
+    </div>
+    <div id="flight-main" role="main" class="ui-content">
+      <h4><span id="flight-main-span"></span>航班动态 (仅供参考)</h4>
+      <div id="flight-panel"></div>
+    </div>
+    <div data-role="footer" data-position="fixed" data-theme="b">
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#kb-detail-page" data-transition="none">操作</a></li>
+          <li><a href="#kb-sm-page" data-transition="none">名单</a></li>
+          <li><a href="#" class="ui-btn-active ui-state-persist" data-transition="none">航班</a></li>
+          <li><a href="#kb-history-page" data-transition="none">历史</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- 历史(操作记录) -->
+  <div data-role="page" id="kb-history-page">
+    <div data-role="header" data-position="fixed" data-theme="b">
+      <a href="#index" data-role="button" data-icon="back" data-transition="none">返回列表</a>
+      <h1>历史</h1>    
+    </div>
+    <div role="main" class="ui-content">
+      <ul data-role="listview" id="kb-item-history">
+      </ul>
+    </div>
+    <div data-role="footer" data-position="fixed" data-theme="b">
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#kb-detail-page" data-transition="none">操作</a></li>
+          <li><a href="#kb-sm-page" data-transition="none">名单</a></li>
+          <li><a href="#kb-flight-page" data-transition="none">航班</a></li>
+          <li><a href="#" class="ui-btn-active ui-state-persist" data-transition="none">历史</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- 我的地盘 -->
+  <div data-role="page" id="kb-me-page">
+    <div data-role="header" data-position="fixed" data-theme="b">
+      <a href="#index" data-role="button" data-icon="back" data-transition="none">返回列表</a>
+      <h1>我的地盘</h1>    
+    </div>
+    <div role="main" class="ui-content">
+      <ul data-role="listview">
+        <li data-role="list-divider">我的团队</li>
+        <li><div><a href="tel:561" style="text-decoration: none;">老万 561 <span class="glyphicon glyphicon-earphone"></span></a></div></li>
+        <li><div><a href="tel:568" style="text-decoration: none;">黄鹏 568 <span class="glyphicon glyphicon-earphone"></span></a></div></li>
+        <li><div><a href="tel:567" style="text-decoration: none;">刘赛 567 <span class="glyphicon glyphicon-earphone"></span></a></div></li>
+        <li><div><a href="tel:558" style="text-decoration: none;">沈斌 558 <span class="glyphicon glyphicon-earphone"></span></a></div></li>
+        <li><div><a href="tel:566" style="text-decoration: none;">小鱼 566 <span class="glyphicon glyphicon-earphone"></span></a></div></li>
+        <li><div><a href="tel:551" style="text-decoration: none;">老汪 551 <span class="glyphicon glyphicon-earphone"></span></a></div></li>
+        <li><div><a href="tel:559" style="text-decoration: none;">老何 559 <span class="glyphicon glyphicon-earphone"></span></a></div></li>
+      </ul>
+      <a id="kb-login-page-btn" href="#kb-login-page" data-role="button" data-transition="none">切换用户</a>
+    </div>
+  </div>
+  <script src="js/kb.js"></script>
+</body>
+
+</html>

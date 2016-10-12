@@ -1,0 +1,10 @@
+/*******************************************************
+ * zx.importpeople.css
+ * Root namespace styles
+**/
+
+#importDiv {
+	position:absolute;top:0;
+	right:0;
+	z-index:1000;
+}
